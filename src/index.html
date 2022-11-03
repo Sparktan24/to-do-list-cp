@@ -7,9 +7,42 @@
 </head>
 <body>
     <h1>Hello webpack!!</h1>
+
     <div class="table-container">
       <div class="table">
-        <div class="title-row"></div>
+        <div class="title-row">
+          <h2>Demo</h2>
+          <div class="refresh"></div>
+        </div>
+
+        <div class="list">
+          <ul id="add-item">
+            <li>
+              <form>
+                <input id='new-item' type="text" placeholder="Add to your list...">
+                <input id="submit-new-item" type="submit" value title="click this or press enter to submit">
+              </form>
+            </li>
+          </ul>
+
+          <ul class="item-list">
+
+            <!-- <li class="todo">
+              <input type="checkbox">
+              <div class="saved-item">
+                <label class="label">A list test</label>
+                <textarea class="edit" maxlength="255"></textarea>
+              </div>
+              <div class="item-icon"></div>
+            </li> -->
+
+          </ul>
+
+        </div>
+        <div class="btn-container">
+          <button type="button" class="link-button">Clear all completed</button>
+        </div>
+        
       </div>
     </div>
 </body>
