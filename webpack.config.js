@@ -9,11 +9,11 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html', //template
+      template: './src/index.html', //  template
     }),
   ],
   output: {
-    filename: '[name].js', //Change this from main.js
+    filename: '[name].js', // Change this from main.js
     path: path.resolve(__dirname, 'dist'),
   },
   optimization: {

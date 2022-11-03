@@ -1,7 +1,7 @@
-import _ from 'lodash';
+//  import _ from 'lodash';
 import './style.css';
 
-function component() {
+/* function component() {
   const element = document.createElement('div');
 
   // Lodash, now imported by this script
@@ -11,9 +11,9 @@ function component() {
   return element;
 }
 
-document.body.appendChild(component());
+document.body.appendChild(component()); */
 
-//START
+//  START
 const toDoList = [
   {
     description: 'A list test 1',
@@ -29,16 +29,16 @@ const toDoList = [
     description: 'A list test 3',
     completed: false,
     index: 2,
-  }
-]
+  },
+];
 
 const listContainer = document.querySelector('.item-list');
 
 toDoList.forEach((element) => {
   const li = document.createElement('li');
   li.classList.add('todo');
-  
-  let addElements = ``;
+
+  let addElements = '';
 
   addElements += `
     <input type="checkbox">
@@ -47,7 +47,7 @@ toDoList.forEach((element) => {
       <textarea class="edit" maxlength="255"></textarea>
     </div>
     <div class="item-icon"></div>
-  `
+  `;
   li.innerHTML = addElements;
   listContainer.appendChild(li);
-})
+});
