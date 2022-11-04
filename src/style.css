@@ -112,10 +112,12 @@ ol {
   width: 100%;
   margin-left: 10px;
 }
-.table-container .table .list .item-list .todo .saved-item .edit {
-  display: none;
+.table-container .table .list .item-list .todo .saved-item .task-description {
+  border: none;
   resize: none;
   width: 100%;
+  margin-top: 15px;
+  font-family: "Open Sans", "Lucida Grande", tahoma, verdana, arial, sans-serif;
 }
 .table-container .table .list .item-list .todo .item-icon {
   cursor: move;
@@ -127,8 +129,12 @@ ol {
   opacity: 0.2;
 }
 
-.label {
-  padding: 15px 0;
+.hidden {
+  display: none;
+}
+
+.editing {
+  background-color: #fffeca;
 }
 
 /*# sourceMappingURL=style.css.map */

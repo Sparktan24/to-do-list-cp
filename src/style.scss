@@ -129,11 +129,13 @@ ol {
             width: 100%;
             margin-left: 10px;
 
-            .edit {
-              display: none;
-              //border: none;
+            .task-description {
+              //display: none;
+              border: none;
               resize: none;
               width: 100%;
+              margin-top: 15px;
+              font-family: "Open Sans", "Lucida Grande", tahoma, verdana, arial, sans-serif;
             }
           }
 
@@ -152,6 +154,14 @@ ol {
   }
 }
 
-.label {
-  padding: 15px 0;
+// .label {
+//   padding: 15px 0;
+// }
+
+.hidden {
+  display: none;
+}
+
+.editing {
+  background-color: #fffeca;
 }
