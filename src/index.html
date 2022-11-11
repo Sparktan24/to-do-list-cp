@@ -7,33 +7,31 @@
 </head>
 <body>
 
-    <div class="table-container">
-      <div class="table">
-        <div class="title-row">
-          <h2>Demo</h2>
-          <div class="refresh"></div>
-        </div>
-
-        <div class="list">
-          <ul id="add-item">
-            <li>
-              <form>
-                <input id='new-item' type="text" placeholder="Add to your list...">
-                <input id="submit-new-item" type="submit" value title="click this or press enter to submit">
-              </form>
-            </li>
-          </ul>
-
-          <ul class="item-list">
-
-          </ul>
-
-        </div>
-        <div class="btn-container">
-          <button type="button" class="link-button">Clear all completed</button>
-        </div>
-        
+    <div class="tasks-container">
+      <div class="row">
+        <h2>Title</h2>
+        <div class="refresh"></div>
       </div>
+
+      <div id="input-row">
+        <input type="text" id='add-new-item' class="input-new-item" placeholder="Add to your list...">
+        <input type="submit" id="submit-new-item" value title="click this or press enter to submit">
+      </div>
+
+      <ul id="list-content">
+        <li class="row input">
+          <div class="task-content">
+            <input id="cb-1" type="checkbox" class="checkbox">
+            <label for="cb-1" class="">Hello</label>
+          </div>
+          <div class="item-icon"></div>
+        </li>
+      </ul>
+
+      <div>
+        <button class='row' id="clear-btn">Clear all completed</button>
+      </div>
+
     </div>
 </body>
 </html>

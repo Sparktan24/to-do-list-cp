@@ -15,7 +15,95 @@ ol {
   margin: 0;
   padding: 0;
 }
+//////////////////////////////////////////////////////
 
+.tasks-container {
+  display: flex;
+    flex-direction: column;
+    border-radius: 3px;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
+    background-color: #fff;
+    max-width: 500px;
+    width: 100%;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  align-items: center;
+  //font-size: 18px;
+  h2 {
+    color: #545862;
+    font-size: 15px;
+    font-weight: 400;
+    //padding: 1rem 1rem 1rem 0.5rem;
+    line-height: 20px;
+    margin: 0;
+    width: 100%;
+  }
+}
+
+.refresh {
+  background-image: url(/src/images/loading.png);
+  background-repeat: no-repeat;
+  cursor: pointer;
+  background-size: 13px;
+  width: 20px;
+  height: 20px;
+  opacity: 0.5;
+}
+
+#input-row {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  align-items: center;
+  padding-right: 24px;
+
+  #add-new-item {
+    border: none;
+    height: 50px;
+    padding-left: 20px;
+    line-height: 50px;
+    font-style: italic;
+    width: 100%;
+  }
+
+  #submit-new-item {
+    background-image: url(/src/images/enter-icon.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+.item-icon {
+  cursor: move;
+  background-image: url(/src/images/dots-icon.png);
+  background-size: 20px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  opacity: 0.2;
+}
+
+.checkbox {
+  margin-right: 10px;
+}
+
+#clear-btn {
+  width: 100%;
+  height: 50px;
+  border: none;
+  display: block;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+///////////////////
 .table-container {
   .table {
     display: flex;
@@ -107,47 +195,57 @@ ol {
           cursor: pointer;
         }
       }
+    }
 
-      .item-list {
-        .todo {
-          display: flex;
-          border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-          background-color: #fff;
-          height: 50px;
-          align-items: center;
-          //justify-content: space-between;
-          padding: 0 10px;
+    .item-list {
+      .todo {
+        display: flex;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        background-color: #fff;
+        height: 50px;
+        align-items: center;
+        //justify-content: space-between;
+        padding: 0 10px;
 
-          label {
+        label {
+          width: 100%;
+          padding: 15px 0;
+          line-height: 20px;
+          word-wrap: break-word;
+        }
+
+        .saved-item {
+          width: 100%;
+          margin-left: 10px;
+
+          .task-description {
+            //display: none;
+            border: none;
+            resize: none;
             width: 100%;
-            padding: 15px 0;
-            line-height: 20px;
-            word-wrap: break-word;
+            margin-top: 15px;
+            font-family: "Open Sans", "Lucida Grande", tahoma, verdana, arial, sans-serif;
           }
+        }
 
-          .saved-item {
-            width: 100%;
-            margin-left: 10px;
+        .item-icon {
+          cursor: move;
+          background-image: url(/src/images/dots-icon.png);
+          background-size: 20px;
+          background-repeat: no-repeat;
+          width: 20px;
+          height: 20px;
+          opacity: 0.2;
+        }
 
-            .task-description {
-              //display: none;
-              border: none;
-              resize: none;
-              width: 100%;
-              margin-top: 15px;
-              font-family: "Open Sans", "Lucida Grande", tahoma, verdana, arial, sans-serif;
-            }
-          }
-
-          .item-icon {
-            cursor: move;
-            background-image: url(/src/images/dots-icon.png);
-            background-size: 20px;
-            background-repeat: no-repeat;
-            width: 20px;
-            height: 20px;
-            opacity: 0.2;
-          }
+        .delete-icon {
+          cursor: move;
+          background-image: url(/src/images/trash.png);
+          background-size: 20px;
+          background-repeat: no-repeat;
+          width: 20px;
+          height: 20px;
+          opacity: 0.2;
         }
       }
     }
