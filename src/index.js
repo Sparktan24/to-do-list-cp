@@ -8,7 +8,7 @@ import TaskList from './modules/TaskList';
 // USER INTERFACE -----------------------------------------------------------------------
 const store = new Store();
 const tasksList = new TaskList();
-const generatedElements = document.querySelector('.table');
+const generatedElements = document.querySelector('.tasks-container');
 
 /* class UI {
   static displayTasks() {
@@ -40,7 +40,7 @@ const generatedElements = document.querySelector('.table');
 
 const renderTitle = () => {
   const title = document.createElement('div');
-  title.classList.add('title-row');
+  title.classList.add('row');
   title.innerHTML = `
   <h2>Demo</h2>
   <div class="refresh"></div>`;
@@ -49,20 +49,10 @@ const renderTitle = () => {
 
 const renderAddItem = () => {
   const addElementInput = document.createElement('div');
-  addElementInput.classList.add('list');
+  addElementInput.id = 'input-row';
   addElementInput.innerHTML = `
-  <ul id="add-item">
-    <li>
-      <form>
-        <input id='new-item' type="text" placeholder="Add to your list...">
-        <input id="submit-new-item" type="submit" value title="click this or press enter to submit">
-      </form>
-    </li>
-  </ul>
-
-  <ul class="item-list">
-
-  </ul>
+  <input type="text" id='add-new-item' class="input-new-item" placeholder="Add to your list...">
+  <input type="submit" id="submit-new-item" value title="click this or press enter to submit">
   `;
   return addElementInput;
 };
@@ -70,8 +60,8 @@ const renderAddItem = () => {
 const renderItemRows = () => {
   const item = document.createElement('ul');
   //  item.id = 'todo';
-  item.classList.add('item-list');
-  item.id = 'id-item-list';
+  //  item.classList.add('item-list');
+  item.id = 'list-content';
   const list = tasksList.getTask();
   list.forEach((task) => {
     item.appendChild(task);
@@ -79,9 +69,16 @@ const renderItemRows = () => {
   return item;
 };
 
+const renderBtn = () => {
+  const btn = document.createElement('div');
+  btn.innerHTML = '<button class=\'row\' id="clear-btn">Clear all completed</button>';
+  return btn;
+};
+
 generatedElements.appendChild(renderTitle());
 generatedElements.appendChild(renderAddItem());
 generatedElements.appendChild(renderItemRows());
+generatedElements.appendChild(renderBtn());
 
 //  document.addEventListener('DOMContentLoaded', UI.displayTasks);
 //  const addNewItemEnter = document.querySelector('#new-item');
