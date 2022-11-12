@@ -1,14 +1,15 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Awesome Books
+# To Do list
 
-> In this project, we will build a basic website that allows users to add/remove books from a list.
+> In this project, we will build a basic website that allows users to add/remove tasks from a list.
 
 ## Built With
 
 - HTML
 - CSS
 - JavaScript
+- Webpack
 
 ## Live Demo
 
@@ -19,7 +20,7 @@ Currently not available.
 To get a local copy up and running:
 
 - Clone the repository locally
-- Open index.html using Live Server.
+- Execute npm start in terminal (npm and webpack previously installed).
 
 ## Author
 
