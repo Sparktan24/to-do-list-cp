@@ -40,6 +40,7 @@ export default class TaskList {
     this.list.forEach((task) => {
       const li = document.createElement('li');
       li.classList.add('row');
+      li.classList.add('input');
       li.id = `task-${task.index}`;
       li.innerHTML = `
         <div class="task-content">

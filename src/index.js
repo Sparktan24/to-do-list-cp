@@ -1,8 +1,6 @@
-//  import _ from 'lodash';
-// eslint-disable-next-line max-classes-per-file
 import './style.css';
 import Task from './modules/Task.js';
-import TaskList from './modules/TaskList';
+import TaskList from './modules/TaskList.js';
 
 const tasksList = new TaskList();
 const generatedElements = document.querySelector('.tasks-container');
@@ -28,8 +26,6 @@ const renderAddItem = () => {
 
 const renderItemRows = () => {
   const item = document.createElement('ul');
-  //  item.id = 'todo';
-  //  item.classList.add('item-list');
   item.id = 'list-content';
   const list = tasksList.getTask();
   list.forEach((task) => {
@@ -55,7 +51,7 @@ generatedElements.appendChild(renderBtn());
 
 const inputSubmitTaskBtn = generatedElements.querySelector('#submit-new-item');
 const inputSubmitTaskText = generatedElements.querySelector('#add-new-item');
-const listContent = generatedElements.querySelector('#list-content');
+//  const listContent = generatedElements.querySelector('#list-content');
 
 function Listener() {
   const editBtns = document.querySelectorAll('.edit');
@@ -64,7 +60,6 @@ function Listener() {
       const { id } = e.target;
       const index = id.substring(id.indexOf('-') + 1, id.length);
       const row = document.querySelector(`#task-${index}`);
-      //  console.log(`#task-${index}`);
       row.classList.add('editing');
       const rowText = document.querySelector(`#editItem-${index}`);
       const rowLbl = document.querySelector(`#lbl-${index}`);
@@ -91,12 +86,12 @@ function Listener() {
 
   const listElements = generatedElements.querySelectorAll('li');
   listElements.forEach((element) => {
-    element.addEventListener('dblclick', (e) => {
+    element.addEventListener('dblclick', (e) => { //  dblclick
       const { id } = e.target;
       const index = id.substring(id.indexOf('-') + 1, id.length);
       const rowTask = document.querySelector(`#task-${index}`);
       if (!rowTask.classList.contains('editing')) {
-        rowTask.classList.add('.editing');
+        rowTask.classList.add('editing');
         const rowText = document.querySelector(`#editItem-${index}`);
         const rowLbl = document.querySelector(`#lbl-${index}`);
         const rowEditIcon = document.querySelector(`#edit-${index}`);
@@ -153,6 +148,7 @@ inputSubmitTaskText.addEventListener('keypress', (e) => {
     inputSubmitTaskText.value = '';
     tasksList.newIndex();
     refresh();
+    Listener();
   }
 });
 
@@ -161,33 +157,9 @@ inputSubmitTaskBtn.addEventListener('click', () => {
   tasksList.add(data);
   inputSubmitTaskText.value = '';
   tasksList.newIndex();
-  generatedElements.replaceChild(renderItemRows(), listContent);
+  refresh();
+  Listener();
+  //  generatedElements.replaceChild(renderItemRows(), listContent);
 });
 
 Listener();
-
-//  document.addEventListener('DOMContentLoaded', UI.displayTasks);
-//  const addNewItemEnter = document.querySelector('#new-item');
-//  const AddNewItemClick = document.querySelector('#submit-new-item');
-
-/* AddNewItemClick.addEventListener('click', (e) => {
-  e.preventDefault();
-  const description = document.querySelector('#new-item').value;
-  const completed = false;
-  const index = store.count;
-  const task = new Task(description, completed, index);
-  UI.addTaskList(task);
-  store.addTask(task);
-  UI.clearFields();
-}); */
-
-/* function Listener() {
-  const taskContent = document.querySelectorAll('task-description');
-  taskContent.forEach((description) => {
-    taskContent.addEventListener('click', (e) => {
-      const row = document.querySelector('.todo');
-      row.classList.add('editing');
-    });
-  });
-} //  Listener
-Listener(); */
