@@ -13,7 +13,7 @@
 
 ## Live Demo
 
-Currently not available.
+https://sparktan24.github.io/to-do-list-cp/dist/
 
 ## Getting Started
 
