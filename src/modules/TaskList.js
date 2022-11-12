@@ -19,6 +19,21 @@ export default class TaskList {
     localStorage.setItem('data', JSON.stringify(this.list));
   }
 
+  delete(index) {
+    this.list.splice(index - 1, 1);
+    localStorage.setItem('data', JSON.stringify(this.list));
+  }
+
+  edit(data) {
+    const { index, description } = data;
+    this.list.forEach((element) => {
+      if (element.index === parseInt(index, 10)) {
+        element.description = description;
+      }
+    });
+    localStorage.setItem('data', JSON.stringify(this.list));
+  }
+
   getTask() {
     const data = [];
     this.list = JSON.parse(localStorage.getItem('data')) || [];
@@ -29,10 +44,11 @@ export default class TaskList {
       li.innerHTML = `
         <div class="task-content">
           <input id="cb-${task.index}" type="checkbox" class="checkbox">
-          <label for="cb-${task.index} id='lbl-${task.index}'" class="">${task.description}</label>
-          <input type="text" class="input-edit-text hidden" id='edit-item-${task.index}' value='${task.description}'>
+          <label id="lbl-${task.index}" for="cb-${task.index} class="">${task.description}</label>
+          <input type="text" class="input-edit-text hidden" id='editItem-${task.index}' value='${task.description}'>
         </div>
-        <div class="item-icon"></div>
+        <div class="item-icon edit" id='edit-${task.index}'></div>
+        <div class="delete item-icon hidden" id='delete-${task.index}'></div>
         `;
       data.push(li);
       //  console.log(data);

@@ -57,9 +57,94 @@ const inputSubmitTaskBtn = generatedElements.querySelector('#submit-new-item');
 const inputSubmitTaskText = generatedElements.querySelector('#add-new-item');
 const listContent = generatedElements.querySelector('#list-content');
 
-/* function Listener() {
-  
-} */
+function Listener() {
+  const editBtns = document.querySelectorAll('.edit');
+  editBtns.forEach((element) => {
+    element.addEventListener('click', (e) => {
+      const { id } = e.target;
+      const index = id.substring(id.indexOf('-') + 1, id.length);
+      const row = document.querySelector(`#task-${index}`);
+      //  console.log(`#task-${index}`);
+      row.classList.add('editing');
+      const rowText = document.querySelector(`#editItem-${index}`);
+      const rowLbl = document.querySelector(`#lbl-${index}`);
+      const rowEditIcon = document.querySelector(`#edit-${index}`);
+      const rowDeleteIcon = document.querySelector(`#delete-${index}`);
+      rowText.classList.toggle('hidden');
+      rowLbl.classList.toggle('hidden');
+      rowEditIcon.classList.toggle('hidden');
+      rowDeleteIcon.classList.toggle('hidden');
+    });
+  });
+
+  const deleteBtns = document.querySelectorAll('.delete');
+  deleteBtns.forEach((button) => {
+    button.addEventListener('click', (e) => {
+      const { id } = e.target;
+      const index = id.substring(id.indexOf('-') + 1, id.length);
+      tasksList.delete(index);
+      tasksList.newIndex();
+      refresh();
+      Listener();
+    });
+  });
+
+  const listElements = generatedElements.querySelectorAll('li');
+  listElements.forEach((element) => {
+    element.addEventListener('dblclick', (e) => {
+      const { id } = e.target;
+      const index = id.substring(id.indexOf('-') + 1, id.length);
+      const rowTask = document.querySelector(`#task-${index}`);
+      if (!rowTask.classList.contains('editing')) {
+        rowTask.classList.add('.editing');
+        const rowText = document.querySelector(`#editItem-${index}`);
+        const rowLbl = document.querySelector(`#lbl-${index}`);
+        const rowEditIcon = document.querySelector(`#edit-${index}`);
+        const rowDeleteIcon = document.querySelector(`#delete-${index}`);
+        rowText.classList.toggle('hidden');
+        rowLbl.classList.toggle('hidden');
+        rowEditIcon.classList.toggle('hidden');
+        rowDeleteIcon.classList.toggle('hidden');
+        rowText.select();
+      }
+    });
+  });
+
+  const inputEditText = document.querySelectorAll('.input-edit-text');
+  inputEditText.forEach((element) => {
+    element.addEventListener('blur', (e) => {
+      const { id, value } = e.target;
+      const index = id.substring(id.indexOf('-') + 1, id.length);
+      const rowTask = document.querySelector(`#task-${index}`);
+      rowTask.classList.remove('.editing');
+      const rowText = document.querySelector(`#editItem-${index}`);
+      const rowLbl = document.querySelector(`#lbl-${index}`);
+      const rowEditIcon = document.querySelector(`#edit-${index}`);
+      const rowDeleteIcon = document.querySelector(`#delete-${index}`);
+      rowText.classList.toggle('hidden');
+      rowLbl.classList.toggle('hidden');
+      rowEditIcon.classList.toggle('hidden');
+      rowDeleteIcon.classList.toggle('hidden');
+      const data = {
+        description: value,
+        index,
+      };
+      tasksList.edit(data);
+      tasksList.newIndex();
+      refresh();
+      Listener();
+    });
+
+    element.addEventListener('keypress', (e) => {
+      if (e.keyCode === 13) {
+        const { id } = e.target;
+        const index = id.substring(id.indexOf('-') + 1, id.length);
+        const rowText = document.querySelector(`#editItem-${index}`);
+        rowText.blur();
+      }
+    });
+  });
+}// END LISTENER
 
 inputSubmitTaskText.addEventListener('keypress', (e) => {
   if (e.keyCode === 13) {
@@ -68,7 +153,6 @@ inputSubmitTaskText.addEventListener('keypress', (e) => {
     inputSubmitTaskText.value = '';
     tasksList.newIndex();
     refresh();
-    //  Listener();
   }
 });
 
@@ -79,6 +163,8 @@ inputSubmitTaskBtn.addEventListener('click', () => {
   tasksList.newIndex();
   generatedElements.replaceChild(renderItemRows(), listContent);
 });
+
+Listener();
 
 //  document.addEventListener('DOMContentLoaded', UI.displayTasks);
 //  const addNewItemEnter = document.querySelector('#new-item');

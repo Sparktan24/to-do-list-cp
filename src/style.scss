@@ -90,6 +90,11 @@ ol {
   opacity: 0.2;
 }
 
+.delete {
+  background-image: url(/src/images/trash.png);
+  cursor: pointer;
+}
+
 .checkbox {
   margin-right: 10px;
 }
@@ -105,6 +110,7 @@ ol {
 
 .input-edit-text {
   border: none;
+  background: transparent;
 }
 
 ///////////////////
