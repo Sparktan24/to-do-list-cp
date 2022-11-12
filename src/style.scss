@@ -120,3 +120,8 @@ ol {
 .editing {
   background-color: #fffeca;
 }
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+}

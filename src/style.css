@@ -116,4 +116,9 @@ ol {
   background-color: #fffeca;
 }
 
+.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
 /*# sourceMappingURL=style.css.map */

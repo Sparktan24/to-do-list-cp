@@ -1,6 +1,7 @@
 import './style.css';
 import Task from './modules/Task.js';
 import TaskList from './modules/TaskList.js';
+import TaskDone from './modules/TaskDone';
 
 const tasksList = new TaskList();
 const generatedElements = document.querySelector('.tasks-container');
@@ -139,8 +140,20 @@ function Listener() {
       }
     });
   });
+  const checkboxes = generatedElements.querySelectorAll('.checkbox');
+  checkboxes.forEach((checkbox) => {
+    checkbox.addEventListener('change', (e) => {
+      const { id } = e.target;
+      const index = id.substring(id.indexOf('-') + 1, id.length);
+      const completed = new TaskDone();
+      completed.changeState(index);
+      refresh();
+      Listener();
+    });
+  });
 }// END LISTENER
 
+//  ENTER AT ADD TO YOUR LIST
 inputSubmitTaskText.addEventListener('keypress', (e) => {
   if (e.keyCode === 13) {
     const data = new Task(inputSubmitTaskText.value);
@@ -162,4 +175,11 @@ inputSubmitTaskBtn.addEventListener('click', () => {
   //  generatedElements.replaceChild(renderItemRows(), listContent);
 });
 
+const clearAllBtn = document.querySelector('#clear-btn');
+clearAllBtn.addEventListener('click', () => {
+  tasksList.clearCompletedTasks();
+  tasksList.newIndex();
+  refresh();
+  Listener();
+});
 Listener();
